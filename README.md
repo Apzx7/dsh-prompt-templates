@@ -133,6 +133,15 @@ dsh plugin --profile web add github:Apzx7/dsh-prompt-templates
 
 `hidden: true` 表示把该内置模板移出列表；同 id 的完整条目表示覆盖内置默认值。新版本新增的初始分类会自动补给旧数据，不影响用户已有分类。
 
+## 赞赏
+
+如果这个小工具帮你省了点时间，可以请我喝一杯奶茶 ☕ 你的支持是我继续维护它的动力。
+
+<img src="./assets/reward.png" alt="赞赏码" width="260" />
+
+> 纯自愿，不赞赏也完全不影响使用；有问题照样提 issue，我都会看。
+
+
 ## 许可
 
 [MIT](./LICENSE)
