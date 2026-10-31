@@ -61,44 +61,10 @@
 
 仓库初始化、代码审查、TDD、系统化排错、架构体检、解决合并冲突、需求拷问、转规格、拆工单、交接、持续学习等工程工作流模板。
 
-## 视觉
+## 界面行为
 
-材质分四层，每层职责不同，不共用同一套模糊/透明度/阴影。
-
-**1. 外层玻璃（`.modal::before`）**：复用 DSH 自己的菜单材质 token，保证与宿主一致且主题自动跟随。
-
-```css
-background-color: var(--lg-panel-fill);   /* color-mix(bg-overlay 55%) */
-backdrop-filter:  var(--lg-panel-blur);   /* blur(40px) saturate(150%) */
-box-shadow: 顶部镜面高光 + 底部厚度暗边 + 左右细反光 + 轻量环境影;
-```
-
-面板填充用比页面更暗的冷灰（亮色 `#e9ecf2`）。**这是玻璃能被看见的前提**——纯白页面上用白色半透明，模糊再多也等于不可见。
-
-**2. 环境光层（`.modal::after`）**：画在玻璃之下（`z-index:-2`），由玻璃的 `backdrop-filter` 采样，让纯白页面上也能透出环境色。三个极低饱和的径向渐变（青蓝 20% / 雾紫 15% / 薄荷 13%），深色主题单独覆盖为更冷的版本。
-
-**3. 卡片 / 分组 / 控件**：用文字色做中性叠加，亮色主题变暗、深色主题变亮，两种主题都成立。卡片**没有** `backdrop-filter`——整块面板只有一层模糊，避免 30+ 个模糊层拖慢滚动。
-
-**4. 光标反光**：`pointermove` 写 `--lg-px/--lg-py`，玻璃用径向渐变画局部镜面反光。rAF 节流、仅精确指针设备启用、离开复位。
-
-实测（亮色主题）：
-
-| 层 | RGB |
-| --- | --- |
-| 页面 | `#ffffff` |
-| 面板 | `rgb(218,224,232)` |
-| 卡片 | `rgb(225,226,230)` |
-
-深色主题：页面 L=41 → 面板 L=87 → 卡片 L=81。
-
-圆角层级：面板 32px → 分组 24px → 卡片 18px → 控件 12px → 徽章 8px。`corner-shape: round` 通过 `@supports` 渐进增强为连续曲率。
-
-## 布局与滚动
-
-- 卡片网格 `repeat(auto-fill, minmax(200px, 1fr))`：宽屏 4 列，窄窗口自动降为 3/2/1 列
-- 网格子项 `min-width: 0`，从根因上消除横向溢出
-- 面板高度由 `--dpt-room` 动态计算：取输入框之上的实际剩余空间，**输入框再高也不会把弹窗顶出视口**
-- 面板打开期间将输入区限制在 168px（使用 DSH 的 `[data-composer-seat]`，不依赖哈希类名）
+- 卡片随窗口宽度自动 4 / 3 / 2 / 1 列，不会出现横向滚动
+- 输入框内容再长也不会把面板顶出视口，关闭按钮始终可点
 
 ## 安装
 
@@ -138,7 +104,7 @@ dsh plugin --profile web add github:Apzx7/dsh-prompt-templates
 | `client.js` | 浏览器半：注册 `conversation.input.left`（图标）与 `conversation.input.overlay`（面板）；Liquid Glass 样式与全部 UI 逻辑 |
 | `builtin-templates.json` | 内置模板与初始分类（zh/en 双语） |
 | `cordis.patch.yml` | bundle patch，插入 `prompt-templates` 行 |
-| `market-index.json` | 插件市场索引条目（供 Discover 类市场抓取） |
+| `assets/` | README 截图 |
 
 ## 数据
 
