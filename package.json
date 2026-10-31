@@ -1,6 +1,6 @@
 {
   "name": "dsh-prompt-templates",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
   "description": "DSH 提示词模板库：分类折叠、搜索筛选、收藏、AI 智能归类，内置 34 条模板（含 9 条 AI Coding 思维快捷键）；Liquid Glass 材质。",
   "license": "MIT",
