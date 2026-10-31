@@ -1,6 +1,6 @@
 {
   "meta": {
     "title": "Prompt Templates",
-    "description": "A prompt template library ported from pi-web-ui: open the card grid from the composer icon and fill a template with one click; ships 25 engineering workflow templates with create, edit, remove and reset."
+    "description": "Open a template panel from the composer icon: category groups with collapse, 34 built-in templates (9 AI-coding mindset shortcuts), search, filters, favorites, editing and AI-assisted classification."
   }
 }

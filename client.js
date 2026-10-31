@@ -1,9 +1,9 @@
-// dsh-prompt-templates —— 浏览器半：pi-web-ui 提示词模板 UI 的移植。
+// dsh-prompt-templates —— 浏览器半：提示词模板面板。
 //
-// 来源：xing-shuyin/pi-web-ui  web/src/components/PromptTemplates.tsx（MIT）
-//   卡片网格 / 选择器弹窗 / 编辑弹窗 / 恢复默认 / 内置可移出 —— 结构与交互保持一致；
-//   仅把 pi-web 专有的 useT、appUrl、appSend、react-icons、recordModelUsage 换成
-//   dsh 的等价物（翻译表、相对 URL、inputActions.setDraft、内联 SVG）。
+// 结构：卡片网格 / 选择器弹窗 / 编辑弹窗 / 恢复默认。
+//   内置模板可移出并在「恢复默认」后找回；分类与折叠状态持久化在宿主侧。
+//   面板通过宿主 HTTP 端点读写数据，通过 inputActions 写入输入框，
+//   图标为内联 SVG，翻译由内置字典处理，不引入额外依赖。
 //
 // 注册位置：
 //   conversation.input.left    -> 图标按钮（输入框工具行左侧，dsh 为插件保留的空位）
@@ -197,7 +197,7 @@ window.__ModuleLoader__.load({
     }
 
     // ---------------------------------------------------------------- icons
-    // pi-web 用 react-icons/fi；这里用等价的线性 SVG，避免额外依赖。
+    // 图标为内联线性 SVG，避免额外依赖。
     function svg(paths, size) {
       return function Icon(props) {
         return h(
@@ -264,7 +264,7 @@ window.__ModuleLoader__.load({
     }
 
     // ---------------------------------------------------------------- styles
-    // pi-web-ui 的原始规则；变量层把 --text/--border/--accent… 映射到 dsh 主题 token。
+    // 视觉规则；变量层把 --text/--border/--accent… 映射到 dsh 主题 token。
     // ---------------------------------------------------------------- styles
     // Liquid Glass：半透明玻璃面板 + 内层轻玻璃卡片 + 统一圆角与柔和动效。
     // 颜色全部走 dsh 主题 token，明暗主题自动跟随；不支持 backdrop-filter 时降级为更实的底色。
@@ -324,7 +324,7 @@ window.__ModuleLoader__.load({
       '--lg-ease: cubic-bezier(.22,.61,.36,1)',
       '--lg-dur: 220ms',
 
-      // pi-web 变量名别名，兼容既有规则
+      // 旧变量名别名，保持既有规则兼容
       '--text: var(--lg-text)',
       '--text-dim: var(--lg-text-dim)',
       '--text-faint: var(--lg-text-faint)',
@@ -625,7 +625,7 @@ window.__ModuleLoader__.load({
       }, [])
     }
 
-    /** 有效模板 = 内置（未移出，应用覆盖）+ 自定义。与 pi-web 的 useMemo 同构。 */
+    /** 有效模板 = 内置（未移出，应用覆盖）+ 自定义。 */
     function computeTemplates(items, builtin) {
       var overrides = new Map()
       var hidden = new Set()
@@ -1389,7 +1389,7 @@ window.__ModuleLoader__.load({
     }
 
     // ---------------------------------------------------------------- 面板主体
-    /** 一个面板实例 = 选择器弹窗 + 编辑弹窗状态；pi-web 的 TemplateProvider 等价物。 */
+    /** 一个面板实例 = 选择器弹窗 + 编辑弹窗状态。 */
     // ---------------------------------------------------------------- 分类管理
     function CategoryManager(props) {
       var categories = props.categories

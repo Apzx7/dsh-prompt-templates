@@ -1,0 +1,7 @@
+﻿# 截图只在 GitHub README 用，不进 npm 包（package.json 的 files 已限制，这里再兜一层）
+assets/
+# 本地配置
+.npmrc
+*.log
+.DS_Store
+Thumbs.db
