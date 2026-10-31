@@ -1,5 +1,9 @@
 # dsh-prompt-templates
 
+[![npm](https://img.shields.io/npm/v/dsh-prompt-templates.svg)](https://www.npmjs.com/package/dsh-prompt-templates)
+[![license](https://img.shields.io/npm/l/dsh-prompt-templates.svg)](./LICENSE)
+
+
 给 DSH（DeepSeek Harness）用的提示词模板库：分类折叠、搜索筛选、收藏、AI 智能归类，外加一套「思维快捷键」——用一句提示词切换模型分析问题的角度。
 
 ![提示词模板面板（深色主题）](./assets/panel-dark.png)
@@ -72,13 +76,17 @@
 dsh plugin --profile web add dsh-prompt-templates
 ```
 
-或从源码安装：
+已在 npm 发布：https://www.npmjs.com/package/dsh-prompt-templates
+
+也可以从源码安装（不走 npm）：
 
 ```bash
 dsh plugin --profile web add github:Apzx7/dsh-prompt-templates
 ```
 
 装完刷新浏览器即可。宿主半（`index.js`）改动需要重启 DSH，浏览器半（`client.js`）改动热加载。
+
+> 把 `web` 换成你自己的 profile 名即可，例如桌面端默认是 `desktop`。
 
 ## 兼容性
 
