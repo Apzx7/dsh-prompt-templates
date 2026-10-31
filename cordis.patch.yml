@@ -1,0 +1,7 @@
+# dsh-prompt-templates bundle patch
+#
+# 插入一行宿主插件：提供模板存储 + /__prompt-templates HTTP 端点；
+# 同一包名在浏览器侧注册提示词模板按钮与卡片网格弹窗。
+- insert:
+    - id: prompt-templates
+      name: 'dsh-prompt-templates'

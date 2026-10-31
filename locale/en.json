@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Prompt Templates",
+    "description": "A prompt template library ported from pi-web-ui: open the card grid from the composer icon and fill a template with one click; ships 25 engineering workflow templates with create, edit, remove and reset."
+  }
+}

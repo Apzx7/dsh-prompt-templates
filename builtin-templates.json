@@ -1,0 +1,463 @@
+{
+  "version": 3,
+  "categories": [
+    {
+      "id": "mind",
+      "name": "思维模型",
+      "nameEn": "Mindset",
+      "order": 0
+    },
+    {
+      "id": "dev",
+      "name": "开发编程",
+      "nameEn": "Development",
+      "order": 1
+    },
+    {
+      "id": "image",
+      "name": "AI 生图",
+      "nameEn": "Image generation",
+      "order": 2
+    },
+    {
+      "id": "video",
+      "name": "视频创作",
+      "nameEn": "Video",
+      "order": 3
+    },
+    {
+      "id": "study",
+      "name": "学习研究",
+      "nameEn": "Study & research",
+      "order": 4
+    },
+    {
+      "id": "writing",
+      "name": "写作创作",
+      "nameEn": "Writing",
+      "order": 5
+    },
+    {
+      "id": "work",
+      "name": "工作效率",
+      "nameEn": "Productivity",
+      "order": 6
+    },
+    {
+      "id": "other",
+      "name": "其他",
+      "nameEn": "Other",
+      "order": 7
+    }
+  ],
+  "templates": [
+    {
+      "id": "setup",
+      "icon": "🛠",
+      "title": "仓库初始化",
+      "desc": "让仓库了解它的构建与约定",
+      "prompt": "请先扫描这个仓库，建立「其他工作流都能用」的基础上下文，输出一份简明报告：\n\n1. 项目类型、技术栈与目录结构\n2. 构建 / 测试 / 运行 / 格式化的具体命令\n3. 代码约定与命名规范\n4. 任务 / issue 的存放位置与格式\n5. 目前已知的坑或遗留问题\n\n先只报告，不修改任何文件。",
+      "titleEn": "Repo setup",
+      "descEn": "Give the repo a baseline that other workflows can use",
+      "promptEn": "Scan this repository and build the baseline context other workflows rely on, then report concisely:\n\n1. Project type, tech stack and directory layout\n2. Concrete commands for build / test / run / format\n3. Code conventions and naming rules\n4. Where tasks / issues live and their format\n5. Known pitfalls or leftover issues\n\nReport only — do not modify any files.",
+      "category": "dev",
+      "order": 0
+    },
+    {
+      "id": "ask",
+      "icon": "🧭",
+      "title": "技能导航",
+      "desc": "告诉我该用哪个流程",
+      "prompt": "我先描述当前要解决的情况，你先判断最适合的工作流（需求澄清 / 拆解计划 / 测试驱动 / 排错 / 架构 / 审查 / 交接等），说明为什么推荐它、会怎么做，等我确认后按它执行。",
+      "titleEn": "Skill navigator",
+      "descEn": "Tell me which workflow to use",
+      "promptEn": "I'll describe the situation I'm in; you decide the best workflow (clarify requirements / plan & execute / TDD / debugging / architecture / review / handoff, etc.), explain why you recommend it and how you'd run it, then execute it after I confirm.",
+      "category": "work",
+      "order": 1
+    },
+    {
+      "id": "grilldocs",
+      "icon": "🗣",
+      "title": "需求拷问·落档",
+      "desc": "边盘问需求边记录决策",
+      "prompt": "动手前，请用拷问的方式向我盘问这个计划（一次一个问题），直到达成共识。同时把过程中的关键术语和已定决策记录下来（例如写入 CONTEXT.md 或 ADR 文件），让后续所有工作都基于同一套「共享语言」。每个问题先给出你的推荐答案。",
+      "titleEn": "Grill & record",
+      "descEn": "Interview the plan and record decisions",
+      "promptEn": "Before starting, grill me about this plan (one question at a time) until we reach shared understanding. Record key terms and settled decisions as you go (e.g. into CONTEXT.md or an ADR file) so all later work shares one vocabulary. Give your recommended answer with each question.",
+      "category": "work",
+      "order": 2
+    },
+    {
+      "id": "tospec",
+      "icon": "📝",
+      "title": "转规格说明",
+      "desc": "把讨论结果整理成规格书",
+      "prompt": "请把我们在对话中已经达成的共识，整理成一份结构化的规格说明书：\n\n1. 背景与目标\n2. 明确的目标与非目标\n3. 用户与使用场景\n4. 边界条件与失败场景\n5. 验收标准（怎样算完成）\n6. 接口 / 数据结构概要\n\n先输出规格让我评审，确认后再继续。",
+      "titleEn": "To spec",
+      "descEn": "Turn the agreed discussion into a written spec",
+      "promptEn": "Turn the consensus we reached into a structured specification:\n\n1. Background and goals\n2. Explicit goals and non-goals\n3. Users and usage scenarios\n4. Edge cases and failure modes\n5. Acceptance criteria (what counts as done)\n6. Interface / data-shape overview\n\nOutput the spec for my review first, then continue only after I confirm.",
+      "category": "work",
+      "order": 3
+    },
+    {
+      "id": "totickets",
+      "icon": "🎫",
+      "title": "拆工单",
+      "desc": "把规格拆成可构建的小任务",
+      "prompt": "请把这份规格说明拆成一组小工单，供逐个构建：\n\n1. 每个工单足够小、可独立验收\n2. 标注依赖顺序（哪些必须先做）\n3. 每个工单含：做什么、验收标准、涉及文件\n4. 识别出可并行的工单\n\n先输出工单列表，我确认顺序后再执行。",
+      "titleEn": "To tickets",
+      "descEn": "Split the spec into small buildable tickets",
+      "promptEn": "Split this spec into a set of small tickets an agent can build one by one:\n\n1. Each ticket small enough to be independently accepted\n2. Annotate dependency order (what must come first)\n3. Each ticket has: what to do, acceptance criteria, files involved\n4. Flag which tickets can run in parallel\n\nOutput the ticket list; I'll confirm the order before you execute.",
+      "category": "work",
+      "order": 4
+    },
+    {
+      "id": "implement",
+      "icon": "🏗",
+      "title": "规格落地",
+      "desc": "按规格测试优先实现",
+      "prompt": "请按这份规格说明实现，测试优先：\n\n1. 先为每个工单写会失败的测试（覆盖正常、边界、错误分支）\n2. 用最小实现让测试通过\n3. 重构并保持测试通过\n4. 逐工单推进，每完成一个简要汇报\n\n最后对照验收标准逐条确认。",
+      "titleEn": "Implement spec",
+      "descEn": "Build the finished spec, test-first",
+      "promptEn": "Implement per this spec, test-first:\n\n1. Write failing tests for each ticket first (happy path, edges, error branches)\n2. Make them pass with the minimal implementation\n3. Refactor while keeping tests green\n4. Proceed ticket by ticket, reporting briefly after each\n\nFinally check every acceptance criterion explicitly.",
+      "category": "dev",
+      "order": 5
+    },
+    {
+      "id": "codeview",
+      "icon": "🧹",
+      "title": "代码审查",
+      "desc": "对照规格与标准审查 diff",
+      "prompt": "请审查最近改动的 diff：\n\n1. 对照规格说明，实现是否完全覆盖、有无偏差\n2. 正确性：边界、空值、并发与时序\n3. 安全：输入校验、注入、敏感信息\n4. 性能与可读性：是否遵循项目约定\n5. 测试：关键路径是否有覆盖\n\n按严重程度分级列出问题，每条给出具体修改建议。",
+      "titleEn": "Code review",
+      "descEn": "Review the diff against the spec and your standards",
+      "promptEn": "Review the recently changed diff:\n\n1. Against the spec: is the implementation complete and faithful?\n2. Correctness: edges, nulls, concurrency and timing\n3. Security: input validation, injection, sensitive data\n4. Performance & readability: does it follow project conventions?\n5. Tests: are critical paths covered?\n\nList issues by severity, each with a concrete suggestion.",
+      "category": "dev",
+      "order": 6
+    },
+    {
+      "id": "wayfinder",
+      "icon": "🗺",
+      "title": "大任务地图",
+      "desc": "把大工程画成决策地图",
+      "prompt": "这是一个大型任务。请先把它画成一张「决策地图」：\n\n1. 拆出所有需要做出的决策点及其依赖关系\n2. 为每个决策点列出选项、权衡与你的推荐\n3. 标注哪些可以并行推进、哪些必须串行\n4. 输出一份路径规划，我逐项确认后再动手。",
+      "titleEn": "Wayfinder",
+      "descEn": "Chart a large effort as a map of decisions",
+      "promptEn": "This is a large task. First chart it as a decision map:\n\n1. List every decision point and its dependencies\n2. For each decision give options, trade-offs and your recommendation\n3. Mark what can run in parallel vs. what must be sequential\n4. Output a path plan; I'll confirm each item before you start.",
+      "category": "work",
+      "order": 7
+    },
+    {
+      "id": "prototype",
+      "icon": "🔬",
+      "title": "快速原型",
+      "desc": "用一次性代码验证设计假设",
+      "prompt": "请针对这个设计问题写一个最小原型来验证假设：\n\n1. 只验证关键假设，不做完整实现\n2. 用最简单的方式（可硬编码、可牺牲边界情况）\n3. 运行并告诉我结论：假设成立吗？有哪些权衡？\n4. 验证完的原型可以删除，或等确认后再正式实现。",
+      "titleEn": "Prototype",
+      "descEn": "Answer a design question with throwaway code",
+      "promptEn": "Write a minimal prototype to validate the design assumption:\n\n1. Validate only the key assumption, not the full implementation\n2. Use the simplest means (hard-coding and skipped edge cases are fine)\n3. Run it and tell me the verdict: does the assumption hold? trade-offs?\n4. The prototype can be deleted, or made production-ready only after I confirm.",
+      "category": "dev",
+      "order": 8
+    },
+    {
+      "id": "research",
+      "icon": "📚",
+      "title": "有据调研",
+      "desc": "读一手来源给出带引用的答案",
+      "prompt": "请调研这个问题，优先读一手来源（官方文档 / 源码 / 规范）：\n\n1. 给出带来源链接的答案\n2. 明确区分：事实、合理推断、仍不确定\n3. 列出主要选项及其权衡\n4. 避免用二手内容拼凑，找不到就直接说没找到。",
+      "titleEn": "Research",
+      "descEn": "Get a cited answer from primary sources",
+      "promptEn": "Research this question, preferring primary sources (official docs / source / specs):\n\n1. Give an answer with source links\n2. Distinguish facts, reasonable inference, and what's still uncertain\n3. List the main options and their trade-offs\n4. Don't stitch together secondary content; say so if you can't find it.",
+      "category": "study",
+      "order": 9
+    },
+    {
+      "id": "arch",
+      "icon": "🏛",
+      "title": "架构体检",
+      "desc": "找出值得重构的模块（报告）",
+      "prompt": "对整个代码库做一次架构体检：\n\n1. 找出「深模块被破坏」的迹象：过长的函数与类、明显的重复、命名混乱、隐藏的耦合\n2. 按严重程度与影响范围分级，输出一份可视化改进报告\n3. 对每一项给出最小可行的重构方案与理由\n4. 先报告再动手，重构前确认范围。",
+      "titleEn": "Architecture review",
+      "descEn": "Find the modules worth refactoring (report)",
+      "promptEn": "Do an architecture review of the whole codebase:\n\n1. Find signs of broken deep modules: oversized functions/classes, duplication, poor naming, hidden coupling\n2. Prioritize improvements by severity and blast radius; produce a visual report\n3. For each item give the minimal viable refactor with rationale\n4. Report before changing anything; confirm scope before refactoring.",
+      "category": "dev",
+      "order": 10
+    },
+    {
+      "id": "debug",
+      "icon": "🐛",
+      "title": "系统化排错",
+      "desc": "从可复现的失败开始诊断",
+      "prompt": "请系统化诊断这个 bug：\n\n1. 先复现，给出可复现的步骤或输入（没有就先造最小复现）\n2. 二分或排除法缩小范围到具体模块\n3. 提出假设，用日志 / 断言 / 最小样例验证，不凭感觉改\n4. 定位根因后解释，再做最小修复\n5. 补回归测试防止复发。",
+      "titleEn": "Diagnose bugs",
+      "descEn": "Diagnose from a repro that fails",
+      "promptEn": "Diagnose this bug systematically:\n\n1. Reproduce it first (build a minimal repro if none exists)\n2. Narrow to a specific module via bisection or elimination\n3. Form hypotheses and verify with logs / assertions / a minimal sample — no guessing\n4. Once the root cause is found, explain it, then make the minimal fix\n5. Add a regression test to prevent recurrence.",
+      "category": "dev",
+      "order": 11
+    },
+    {
+      "id": "merge",
+      "icon": "🔀",
+      "title": "解决合并冲突",
+      "desc": "逐个 hunk 完成合并/变基",
+      "prompt": "请帮我解决这个合并 / 变基冲突：\n\n1. 逐个冲突 hunk 处理，先读懂双方各自的意图\n2. 选择或合并出保留正确语义的代码，不盲目取一边\n3. 处理完运行测试与构建确认没问题\n4. 最后总结每处冲突的取舍原因。",
+      "titleEn": "Resolve merge conflicts",
+      "descEn": "Finish a merge or rebase conflict hunk by hunk",
+      "promptEn": "Help me resolve this merge / rebase conflict:\n\n1. Handle each conflict hunk, reading both sides' intent first\n2. Choose or merge to keep correct semantics — don't blindly pick one side\n3. Run tests and build afterwards to confirm\n4. Finally summarize the rationale for each resolution.",
+      "category": "dev",
+      "order": 12
+    },
+    {
+      "id": "triage",
+      "icon": "🗂",
+      "title": "工单分流",
+      "desc": "把原始 issue 整理成可领取的工作",
+      "prompt": "请把这些原始 issue / 反馈整理成可执行的工作项：\n\n1. 去重、合并相关的条目\n2. 分类（bug / 功能 / 改进 / 问题）\n3. 按影响与紧急度标优先级\n4. 每个工作项补上：复现信息或期望、验收标准\n\n输出整理后的清单。",
+      "titleEn": "Triage",
+      "descEn": "Sort raw issues into work someone can pick up",
+      "promptEn": "Turn these raw issues / feedback into actionable work items:\n\n1. Deduplicate and merge related entries\n2. Categorize (bug / feature / improvement / question)\n3. Prioritize by impact and urgency\n4. For each item add: repro info or expectation, acceptance criteria\n\nOutput the cleaned list.",
+      "category": "work",
+      "order": 13
+    },
+    {
+      "id": "wizard",
+      "icon": "✨",
+      "title": "设置向导",
+      "desc": "生成引导人类完成设置的脚本",
+      "prompt": "请为一个需要手动操作的设置流程生成一个引导向导（脚本或文档）：\n\n1. 一步步引导，每步说明为什么\n2. 每步带校验，输错给出可操作的提示\n3. 支持撤销 / 回退到上一步\n4. 结束时做一次自检并给出验证方法。",
+      "titleEn": "Setup wizard",
+      "descEn": "Generate a script that walks a human through setup",
+      "promptEn": "Create a guided wizard (script or doc) for a manual setup flow:\n\n1. Guide step by step, explaining why at each step\n2. Validate each step; on wrong input give actionable hints\n3. Support undo / going back a step\n4. End with a self-check and how to verify.",
+      "category": "work",
+      "order": 14
+    },
+    {
+      "id": "grillme",
+      "icon": "🔍",
+      "title": "需求拷问",
+      "desc": "动手前盘问对齐想法",
+      "prompt": "开始之前，请不遗余力地盘问我这个想法的每一个方面，直到我们达成共识（一次只问一个问题，每个问题先给推荐答案）：\n\n1. 目标与非目标\n2. 用户与场景\n3. 边界与失败模式\n4. 约束与依赖\n5. 验收标准\n\n达成共识后再给实现计划，等确认再写代码。",
+      "titleEn": "Grill me",
+      "descEn": "Align on an idea before committing",
+      "promptEn": "Before starting, interview me relentlessly about every aspect of this idea until we reach shared understanding (one question at a time, each with your recommended answer):\n\n1. Goals and non-goals\n2. Users and scenarios\n3. Edge cases and failure modes\n4. Constraints and dependencies\n5. Acceptance criteria\n\nThen give an implementation plan and wait for my confirmation before writing code.",
+      "category": "work",
+      "order": 15
+    },
+    {
+      "id": "handoff",
+      "icon": "🤝",
+      "title": "交接",
+      "desc": "把长会话写成交接文档",
+      "prompt": "请把当前会话整理成一份交接文档，让另一个 agent / 同事能无缝继续：\n\n1. 背景与目标\n2. 已完成的工作与关键决策（附原因）\n3. 未完成项与下一步\n4. 已知风险与待确认问题\n5. 如何验证当前状态（命令等）\n\n输出为结构化文档。",
+      "titleEn": "Handoff",
+      "descEn": "Write up a long session so another agent can continue",
+      "promptEn": "Turn this session into a handoff doc so another agent / teammate can continue seamlessly:\n\n1. Background and goals\n2. Work done and key decisions (with reasons)\n3. Outstanding items and next steps\n4. Known risks and open questions\n5. How to verify current state (commands, etc.)\n\nOutput as a structured document.",
+      "category": "work",
+      "order": 16
+    },
+    {
+      "id": "questionnaire",
+      "icon": "📋",
+      "title": "转问卷",
+      "desc": "把开放问题变成可填问卷",
+      "prompt": "请把需要别人提供的信息整理成一份可填写的问卷：\n\n1. 每个问题说明背景和用途\n2. 标注必填 / 选填\n3. 给出示例答案降低理解成本\n4. 分组排序，先简单后复杂\n\n输出一份文档，对方可以照着填。",
+      "titleEn": "To questionnaire",
+      "descEn": "Turn open questions into a doc someone fills in",
+      "promptEn": "Turn the info you need from someone into a fillable questionnaire:\n\n1. Explain the background and purpose of each question\n2. Mark required / optional\n3. Give example answers to lower friction\n4. Group and order: easy first, hard later\n\nOutput a doc they can fill in directly.",
+      "category": "work",
+      "order": 17
+    },
+    {
+      "id": "teach",
+      "icon": "🎓",
+      "title": "持续学习",
+      "desc": "跨多次会话循序渐进学习",
+      "prompt": "请按循序渐进的方式教我：\n\n1. 先定学习路径和目标\n2. 一次只讲一小节，讲完给个小练习\n3. 基于上一节的内容递进，主动提问确认理解\n4. 每节结束总结要点\n\n适合跨多次会话推进。",
+      "titleEn": "Teach",
+      "descEn": "Learn a topic across sessions that build on each other",
+      "promptEn": "Teach me this topic incrementally:\n\n1. First set a learning path and goal\n2. Teach one small section at a time, then a quick exercise\n3. Build on the previous section and ask questions to confirm understanding\n4. Summarize key points at the end of each section\n\nWorks well across multiple sessions.",
+      "category": "study",
+      "order": 18
+    },
+    {
+      "id": "ww",
+      "icon": "💬",
+      "title": "说人话",
+      "desc": "用大白话重讲刚才的解释",
+      "prompt": "请把刚才的解释用最简单的语言重新讲一遍：\n\n1. 避免术语，必须用时先给一句话定义\n2. 用类比或具体例子说明\n3. 明确指出哪部分仍是猜测 / 不确定\n4. 用最短的话说完核心意思。",
+      "titleEn": "Wait, what?",
+      "descEn": "Say the last explanation again in plain English",
+      "promptEn": "Re-explain what you just said in the simplest terms:\n\n1. Avoid jargon; define any term you must use in one sentence\n2. Use an analogy or concrete example\n3. Be clear about what is still guesswork / uncertain\n4. Keep the core point as short as possible.",
+      "category": "study",
+      "order": 19
+    },
+    {
+      "id": "wfa",
+      "icon": "📄",
+      "title": "写给 agent 的文档",
+      "desc": "按 agent 易读的原则写文档",
+      "prompt": "请按「写给 agent 阅读」的原则写这份文档 / 说明：\n\n1. 目标与使用场景写在最前\n2. 指令具体、可验证，避免歧义和空话\n3. 给正反例帮助理解\n4. 结构化：标题、步骤、清单\n5. 标注哪些是硬性要求、哪些是可选。",
+      "titleEn": "Writing for agents",
+      "descEn": "Write docs that follow agent-friendly principles",
+      "promptEn": "Write this doc / explanation following “written for agents to read” principles:\n\n1. Put the goal and usage up front\n2. Make instructions concrete and verifiable — no vagueness\n3. Give positive and negative examples\n4. Structure with headings, steps and checklists\n5. Mark what's required vs. optional.",
+      "category": "writing",
+      "order": 20
+    },
+    {
+      "id": "codesign",
+      "icon": "🧱",
+      "title": "深模块设计",
+      "desc": "用深模块原则审查与设计",
+      "prompt": "请用「深模块」设计原则审查 / 设计：\n\n1. 识别模块对外暴露的接口是否比内部实现更简单\n2. 找出把复杂度泄漏到外部的模块\n3. 给出每个模块的职责边界与改进方案\n4. 平衡内聚与复用，避免过度抽象\n\n输出审查结论与重构建议。",
+      "titleEn": "Deep-module design",
+      "descEn": "Review & design with deep-module principles",
+      "promptEn": "Review / design using the “deep module” principle:\n\n1. Check whether each module's public interface is simpler than its implementation\n2. Find modules that leak complexity outward\n3. Give responsibility boundaries and improvement plans\n4. Balance cohesion and reuse without over-abstracting\n\nOutput the review conclusions and refactor suggestions.",
+      "category": "dev",
+      "order": 21
+    },
+    {
+      "id": "domain",
+      "icon": "🏷",
+      "title": "领域建模",
+      "desc": "打磨项目用词并写下来",
+      "prompt": "请帮我梳理这个项目的领域语言：\n\n1. 找出核心术语及当前叫法\n2. 识别同词异义 / 异词同义造成的混乱\n3. 统一推荐用词，写进术语表\n4. 说明每个术语的边界（不是什么）\n\n输出一份领域术语表。",
+      "titleEn": "Domain modeling",
+      "descEn": "Sharpen the words a project uses and write them down",
+      "promptEn": "Help me clean up this project's domain language:\n\n1. Find the core terms and their current spellings\n2. Spot confusion from same-word-different-meaning / different-word-same-meaning\n3. Recommend one canonical term each, into a glossary\n4. State each term's boundary (what it is not)\n\nOutput a domain glossary.",
+      "category": "dev",
+      "order": 22
+    },
+    {
+      "id": "grilling",
+      "icon": "🔥",
+      "title": "拷问流程",
+      "desc": "用拷问压测一个计划",
+      "prompt": "请对下面这个计划做压力测试（拷问）：\n\n1. 逐项检查假设：如果它是错的会怎样？\n2. 找漏洞：边界、失败模式、依赖、时序\n3. 质疑决策：为什么这样？有没有更简单的路？\n4. 每次只提出一个最尖锐的问题，等我回答\n\n直到这个计划经得起推敲。",
+      "titleEn": "Grilling",
+      "descEn": "Stress-test a plan with an interview",
+      "promptEn": "Stress-test this plan with an interview:\n\n1. Check each assumption: what if it's wrong?\n2. Hunt for holes: edges, failure modes, dependencies, timing\n3. Challenge decisions: why this way? is there a simpler path?\n4. Ask one sharp question at a time and wait for my answer\n\nKeep going until the plan holds up.",
+      "category": "work",
+      "order": 23
+    },
+    {
+      "id": "tdd",
+      "icon": "🧪",
+      "title": "测试驱动",
+      "desc": "红-绿-重构的规则",
+      "prompt": "请用 TDD（红-绿-重构）完成：\n\n1. 先写会失败的测试，覆盖正常路径、边界与错误分支\n2. 用最小实现让测试通过\n3. 重构并保持测试通过\n\n避免三种反模式：与实现耦合的测试、空洞断言（永远为真）、横向切片（只测表面）。每步汇报并运行测试。",
+      "titleEn": "Test-driven",
+      "descEn": "The rules of the red-green-refactor loop",
+      "promptEn": "Implement using TDD (red-green-refactor):\n\n1. First write failing tests covering the happy path, edge cases and error branches\n2. Make them pass with the minimal implementation\n3. Refactor while keeping tests green\n\nAvoid three test anti-patterns: tests coupled to the implementation, tautological assertions (always true), and horizontal slicing (surface only). Report after each step and run the tests.",
+      "category": "dev",
+      "order": 24
+    },
+    {
+      "id": "first-principles",
+      "icon": "🔬",
+      "title": "第一性原理",
+      "desc": "回到问题本身，不默认现有方案",
+      "category": "mind",
+      "prompt": "不要默认现有方案或我的判断是正确的。从第一性原理重新分析问题：\n\n1. 真正需要解决的是什么？\n2. 根本原因是什么？\n3. 有哪些可选方案？\n4. 在满足目标和约束的前提下，最小必要的解决方案是什么？\n\n说明关键假设及其依据。",
+      "titleEn": "First principles",
+      "descEn": "Question the premise before optimizing the answer",
+      "promptEn": "Do not assume the current approach or my judgement is correct. Re-analyse the problem from first principles:\n\n1. What problem actually needs solving?\n2. What is the root cause?\n3. What options exist?\n4. What is the minimum necessary solution that meets the goals and constraints?\n\nState the key assumptions and the evidence behind them.",
+      "order": 25
+    },
+    {
+      "id": "adversarial-review",
+      "icon": "🛡",
+      "title": "对抗性审查",
+      "desc": "优先寻找能否定当前方案的反例",
+      "category": "mind",
+      "prompt": "不要急着认可或完善当前方案。请进行对抗性审查，优先寻找能够推翻核心假设的反例、边界条件、失败场景和隐藏风险。\n\n重点检查：安全性、并发、异常处理、数据一致性、资源消耗、维护成本。\n\n每个问题都说明触发条件、影响及可验证的方法；区分真实缺陷与推测性风险。",
+      "titleEn": "Adversarial review",
+      "descEn": "Hunt for the counter-example that breaks the plan",
+      "promptEn": "Do not rush to approve or polish the current approach. Run an adversarial review: prioritise counter-examples, edge cases, failure scenarios and hidden risks that could overturn the core assumption.\n\nFocus on: security, concurrency, error handling, data consistency, resource usage, maintenance cost.\n\nFor each issue give the trigger condition, impact, and a way to verify it. Separate real defects from speculative risk.",
+      "order": 26
+    },
+    {
+      "id": "ablation-study",
+      "icon": "🧪",
+      "title": "消融实验",
+      "desc": "验证每项优化各自的独立贡献",
+      "category": "mind",
+      "prompt": "请为当前方案设计消融实验，验证每个优化措施的独立贡献及相互作用。\n\n先定义：基线、评价指标、测试数据、控制变量；再设计对照组。尽量一次只改变一个关键因素，记录效果、成本和副作用。\n\n不要预设优化有效。条件允许时用实测数据下结论，否则明确标记为待验证假设。",
+      "titleEn": "Ablation study",
+      "descEn": "Attribute the gain to the change that caused it",
+      "promptEn": "Design an ablation study for the current approach that isolates each optimisation's independent contribution and their interactions.\n\nFirst define: baseline, metrics, test data, controlled variables. Then design the comparison groups. Change one key factor at a time; record effect, cost and side effects.\n\nDo not presume the optimisation works. Conclude from measurements where possible; otherwise label it an unverified hypothesis.",
+      "order": 27
+    },
+    {
+      "id": "occams-razor",
+      "icon": "✂️",
+      "title": "奥卡姆剃刀",
+      "desc": "砍掉不必要抽象、组件与依赖",
+      "category": "mind",
+      "prompt": "请用奥卡姆剃刀重新审查当前设计。\n\n在满足明确需求、可靠性和安全性要求的前提下，找出所有非必要的抽象、组件、依赖和流程。比较简化前后的复杂度、故障面、性能与维护成本。\n\n优先选择能够可靠满足需求的最简单方案，不要为了简洁而牺牲必要的工程保障。",
+      "titleEn": "Occam's razor",
+      "descEn": "Cut abstractions that do not pay for themselves",
+      "promptEn": "Re-examine the current design with Occam's razor.\n\nGiven the explicit requirements plus reliability and safety needs, identify every non-essential abstraction, component, dependency and step. Compare complexity, failure surface, performance and maintenance cost before and after simplification.\n\nPrefer the simplest approach that reliably meets the requirements; do not trade away necessary engineering safeguards for brevity.",
+      "order": 28
+    },
+    {
+      "id": "high-cohesion-low-coupling",
+      "icon": "🧩",
+      "title": "高内聚、低耦合",
+      "desc": "审查职责边界与依赖方向",
+      "category": "mind",
+      "prompt": "请从高内聚、低耦合的角度审查当前代码的职责边界。\n\n识别：职责混杂、重复逻辑、循环依赖、过度暴露的内部实现、不稳定的接口。\n\n提出最小必要的重构方案，说明每个模块应该负责什么、依赖什么，以及为什么需要调整。不要为了拆分而拆分，并尽量保持外部行为兼容。",
+      "titleEn": "High cohesion, low coupling",
+      "descEn": "Check responsibility boundaries and dependency direction",
+      "promptEn": "Review the current code's responsibility boundaries from a high-cohesion, low-coupling angle.\n\nIdentify: mixed responsibilities, duplicated logic, circular dependencies, over-exposed internals, unstable interfaces.\n\nPropose the minimum necessary refactor; state what each module should own, what it may depend on, and why the change is needed. Do not split for its own sake, and keep external behaviour compatible.",
+      "order": 29
+    },
+    {
+      "id": "requirement-clarification",
+      "icon": "❓",
+      "title": "需求澄清",
+      "desc": "先别写代码，先问对问题",
+      "category": "mind",
+      "prompt": "先不要编写代码。结合需求文档、现有代码和已有上下文，找出会显著影响实现方向或验收结果的未知信息、冲突和隐含假设。\n\n优先向我提出少量高价值问题，并说明每个问题为什么重要。对于不影响核心实现的细节，采用合理默认值并明确记录。\n\n澄清后整理出：目标、范围、非目标、关键决策、可验证的验收标准。",
+      "titleEn": "Requirement clarification",
+      "descEn": "Ask the right questions before writing code",
+      "promptEn": "Do not write code yet. Using the requirements, the existing code and the available context, find the unknowns, conflicts and implicit assumptions that would materially change the implementation direction or the acceptance result.\n\nAsk me a small number of high-value questions first, and explain why each matters. For details that do not affect the core implementation, pick a sensible default and record it explicitly.\n\nAfter clarifying, summarise: goal, scope, non-goals, key decisions, verifiable acceptance criteria.",
+      "order": 30
+    },
+    {
+      "id": "evidence-driven",
+      "icon": "✅",
+      "title": "证据驱动验证",
+      "desc": "用实际运行结果判断是否完成",
+      "category": "mind",
+      "prompt": "请以可验证的证据判断任务是否完成，不要因为代码看起来合理就认定成功。\n\n根据需求和验收标准，检查关键业务路径、边界条件、失败场景和回归风险。优先运行现有测试，并补充真正有价值的缺失测试。\n\n报告实际执行的命令、测试结果、未覆盖部分和剩余风险；不得声称执行了未实际运行的测试。",
+      "titleEn": "Evidence-driven verification",
+      "descEn": "Judge completion by results, not by how the code reads",
+      "promptEn": "Judge completion by verifiable evidence; do not call it done because the code looks reasonable.\n\nAgainst the requirements and acceptance criteria, check the critical paths, edge cases, failure scenarios and regression risk. Run the existing tests first, then add the missing tests that genuinely matter.\n\nReport the commands actually executed, the results, what remains uncovered, and the residual risk. Never claim to have run a test you did not run.",
+      "order": 31
+    },
+    {
+      "id": "independent-review",
+      "icon": "🔍",
+      "title": "独立复核",
+      "desc": "抛开原作者的思路重新检查",
+      "category": "mind",
+      "prompt": "请暂时不要沿用原实现者的推理过程，独立检查需求、代码差异和验证证据。\n\n优先寻找原方案可能忽略的问题，而不是重复总结其设计意图。按严重程度列出发现，并为每个发现提供对应代码位置、触发条件、影响及复现或验证方法。\n\n没有充分证据的问题请标为待确认，不要制造问题。",
+      "titleEn": "Independent review",
+      "descEn": "Re-check without inheriting the author's reasoning",
+      "promptEn": "Set aside the original author's reasoning for now and independently check the requirement, the diff and the verification evidence.\n\nLook first for what the original approach may have missed rather than restating its intent. List findings by severity, each with its code location, trigger condition, impact, and a way to reproduce or verify it.\n\nMark anything without sufficient evidence as unconfirmed instead of inventing issues.",
+      "order": 32
+    },
+    {
+      "id": "senior-engineer-mode",
+      "icon": "🎯",
+      "title": "资深工程师模式",
+      "desc": "组合版：把五个原则一次性带上",
+      "category": "mind",
+      "prompt": "请以资深工程师的标准处理当前任务。\n\n思考原则：\n- 第一性原理：先确认真正的问题，不默认现有方案正确。\n- 对抗性审查：主动寻找核心假设的反例、边界条件和失败场景。\n- 奥卡姆剃刀：在满足需求与可靠性要求的前提下，避免不必要的复杂度。\n- 高内聚、低耦合：保持清晰的模块职责与依赖边界。\n- 证据驱动：通过测试和实际结果验证结论，不把推测当成事实。\n\n执行要求：\n1. 先检查现有代码、相关文档和项目约定。\n2. 仅对会显著影响实现方向或验收结果的问题进行澄清。\n3. 明确目标、非目标、关键约束与验收标准。\n4. 根据任务规模选择最简单可行的实现方案。\n5. 先识别关键风险，再实现代码和必要测试。\n6. 完成后检查实际改动、测试证据、潜在回归和不必要的复杂度。\n7. 最终报告改动内容、验证结果、未解决问题及剩余风险。\n\n不要为了遵守流程而机械执行所有步骤。根据任务复杂度调整投入：小任务直接完成，复杂任务再进行详细规划。未经实际验证，不要宣称任务已经通过测试。",
+      "titleEn": "Senior engineer mode",
+      "descEn": "Combined: carries all five principles at once",
+      "promptEn": "Handle this task to a senior engineer's standard.\n\nPrinciples:\n- First principles: confirm the real problem; do not assume the current approach is right.\n- Adversarial review: actively seek counter-examples, edge cases and failure scenarios.\n- Occam's razor: avoid unnecessary complexity while still meeting reliability needs.\n- High cohesion, low coupling: keep module responsibilities and dependency boundaries clear.\n- Evidence-driven: verify conclusions with tests and real results; never present speculation as fact.\n\nExecution:\n1. Inspect the existing code, docs and project conventions first.\n2. Clarify only what materially changes direction or acceptance.\n3. State goal, non-goals, key constraints and acceptance criteria.\n4. Choose the simplest viable implementation for the task's size.\n5. Identify key risks, then implement code and the necessary tests.\n6. Afterwards, review the actual diff, test evidence, regressions and accidental complexity.\n7. Report what changed, what was verified, what is unresolved, and the residual risk.\n\nDo not run the checklist mechanically. Scale effort to complexity: finish small tasks directly, plan larger ones properly. Do not claim tests passed without running them.",
+      "order": 33
+    }
+  ]
+}

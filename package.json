@@ -1,0 +1,60 @@
+{
+  "name": "dsh-prompt-templates",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "DSH 提示词模板库：分类折叠、搜索筛选、收藏、AI 智能归类，内置 34 条模板（含 9 条 AI Coding 思维快捷键）；Liquid Glass 材质。",
+  "license": "MIT",
+  "author": "Apzx7",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Apzx7/dsh-prompt-templates.git"
+  },
+  "homepage": "https://github.com/Apzx7/dsh-prompt-templates#readme",
+  "bugs": {
+    "url": "https://github.com/Apzx7/dsh-prompt-templates/issues"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "prompt",
+    "prompt-templates",
+    "liquid-glass"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "builtin-templates.json",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg",
+    "README.md",
+    "LICENSE"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-conversation"
+      ]
+    },
+    "manifestVersion": 1
+  },
+  "icon": "./icon.svg"
+}
